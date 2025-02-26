@@ -31,7 +31,7 @@ class CRUDApp:
 
 
         self.nome_entry.grid(row=0,column=1)
-        self.telefone_entry.grid(row=1,collumn=1)
+        self.telefone_entry.grid(row=1,column=1)
         self.email_entry.grid(row=2,column=1)
         self.usuario_entry.grid(row=3,column=1)
         self.senha_entry.grid(row=4,column=1)
@@ -39,10 +39,10 @@ class CRUDApp:
         self.user_id_entry.grid(row=4,column=1)
 
         #Botão do crud
-        tk.Button(self.root,text="Criar Usuário",command=self.create_user).grid(row=6,collum=0,columnspan=1)
-        tk.Button(self.root,text="Listar Usuário",command=self.create_user).grid(row=6,collum=1,columnspan=1)
-        tk.Button(self.root,text="Alterar Usuário",command=self.create_user).grid(row=7,collum=2,columnspan=0)
-        tk.Button(self.root,text="Exluir Usuário",command=self.create_user).grid(row=7,collum=3,columnspan=1)
+        tk.Button(self.root,text="Criar Usuário",command=self.create_user).grid(row=6,column=0,columnspan=1)
+        tk.Button(self.root,text="Listar Usuário",command=self.create_user).grid(row=6,column=1,columnspan=1)
+        tk.Button(self.root,text="Alterar Usuário",command=self.create_user).grid(row=7,column=2,columnspan=1)
+        tk.Button(self.root,text="Exluir Usuário",command=self.create_user).grid(row=7,column=3,columnspan=1)
 
     def create_user(self):
         nome = self.nome_entry.get()
@@ -88,6 +88,21 @@ class CRUDApp:
             messagebox.showerror("Sucess","Usuário criado com sucesso!")
         else:
             messagebox.showerror("ERROR","Todos os campos são obrigatórios!")
+
+    def delete_user(self):
+        user_id = self.user_id_entry.get()
+        if user_id :
+            delete_user(user_id)
+
+            self.user_id_entry.delete(0,tk.END)
+            messagebox.showerror("Sucess","Usuáio excluído com sucesso!")
+        else:
+            messagebox.showerror("Error","ID do usuário é obrigatória.")
+        
+if __name__ == "__main__":
+    root  = tk.Tk()
+    app = CRUDApp(root)
+    root.mainloop()
 
 
         
