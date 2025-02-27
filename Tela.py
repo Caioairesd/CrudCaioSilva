@@ -36,13 +36,13 @@ class CRUDApp:
         self.usuario_entry.grid(row=3,column=1)
         self.senha_entry.grid(row=4,column=1)
 
-        self.user_id_entry.grid(row=4,column=1)
+        self.user_id_entry.grid(row=5,column=1)
 
         #Botão do crud
         tk.Button(self.root,text="Criar Usuário",command=self.create_user).grid(row=6,column=0,columnspan=1)
-        tk.Button(self.root,text="Listar Usuário",command=self.create_user).grid(row=6,column=1,columnspan=1)
-        tk.Button(self.root,text="Alterar Usuário",command=self.create_user).grid(row=7,column=2,columnspan=1)
-        tk.Button(self.root,text="Exluir Usuário",command=self.create_user).grid(row=7,column=3,columnspan=1)
+        tk.Button(self.root,text="Listar Usuário",command=self.read_users).grid(row=6,column=1,columnspan=1)
+        tk.Button(self.root,text="Alterar Usuário",command=self.update_user).grid(row=7,column=0,columnspan=1)
+        tk.Button(self.root,text="Exluir Usuário",command=self.delete_user).grid(row=7,column=1,columnspan=1)
 
     def create_user(self):
         nome = self.nome_entry.get()
@@ -59,7 +59,7 @@ class CRUDApp:
             self.usuario_entry.delete(0,tk.END)
             self.senha_entry.delete(0,tk.END)
 
-            messagebox.showerror("Sucess","Usuário criado com sucesso!")
+            messagebox.showinfo("Sucess","Usuário criado com sucesso!")
         else:
             messagebox.showerror("ERROR","Todos os campos são obrigatórios!")
 
@@ -85,7 +85,7 @@ class CRUDApp:
             self.usuario_entry.delete(0,tk.END)
             self.senha_entry.delete(0,tk.END)
         
-            messagebox.showerror("Sucess","Usuário criado com sucesso!")
+            messagebox.showinfo("Sucess","Usuário criado com sucesso!")
         else:
             messagebox.showerror("ERROR","Todos os campos são obrigatórios!")
 
@@ -95,7 +95,7 @@ class CRUDApp:
             delete_user(user_id)
 
             self.user_id_entry.delete(0,tk.END)
-            messagebox.showerror("Sucess","Usuáio excluído com sucesso!")
+            messagebox.showinfo("Sucess","Usuáio excluído com sucesso!")
         else:
             messagebox.showerror("Error","ID do usuário é obrigatória.")
         
