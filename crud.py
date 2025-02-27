@@ -2,7 +2,11 @@ import mysql.connector
 from config import MYSQL_HOST,MYSQL_USER, MYSQL_PASSWORD, MYSQL_DATABASE 
 
 def get_connection():
-    return mysql.connector.connect(host = MYSQL_HOST,user = MYSQL_USER,password = MYSQL_PASSWORD,database = MYSQL_DATABASE)
+    return mysql.connector.connect(
+    host = MYSQL_HOST,
+    user = MYSQL_USER,
+    password = MYSQL_PASSWORD,
+    database = MYSQL_DATABASE)
 
 def create_user(nome,telefone,email,usuario,senha):
     conn = get_connection()
@@ -33,7 +37,7 @@ def update_user(user_id,nome,telefone,email,usuario,senha):
 def delete_user(user_id,nome,telefone,email,usuario,senha):
     conn = get_connection()
     cursor = conn.cursor() 
-    query = "DELETE FROM usuario WHERE idusuario = %s"
+    query = "DELETE * FROM usuario WHERE idusuario = %s"
     cursor.execute(query,user_id)
     conn.commit()
     cursor.close()
